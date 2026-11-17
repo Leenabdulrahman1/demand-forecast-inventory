@@ -2,19 +2,21 @@
 
 ## Overview
 
-A machine learning project that forecasts product demand and
-uses the predictions to support inventory replenishment decisions.
+A machine learning project that forecasts retail product demand and uses the predictions to support inventory replenishment decisions.
+
+The project combines demand forecasting, uncertainty estimation, and inventory optimization to investigate how forecasting approaches affect simulated inventory costs.
 
 ## Objectives
 
-- Explore and clean historical retail sales data.
-- Build baseline demand forecasting models.
+- Explore and preprocess historical retail sales data.
+- Build a seasonal naive forecasting baseline.
 - Train a global machine learning forecasting model.
-- Evaluate forecasts using time-based backtesting.
+- Evaluate forecasts using chronological training, validation, and test splits.
 - Estimate inventory decisions using forecast uncertainty.
-- Compare inventory costs under different forecasting approaches.
+- Compare simulated inventory costs under different forecasting strategies.
+- Analyze how different gross margin assumptions affect inventory decisions.
 
-## Planned Technologies
+## Technologies Used
 
 - Python
 - Pandas and NumPy
@@ -27,16 +29,46 @@ uses the predictions to support inventory replenishment decisions.
 
 ## Project Status
 
-Environment setup completed. Data exploration is next.
+**Completed — ready for demonstration.**
 
-## Evaluation
+The project includes:
 
-Forecasting metrics:
-- RMSSE
-- Pinball loss
-- Prediction interval coverage
+- Data exploration and preprocessing using the M5 retail dataset.
+- Feature engineering and LightGBM demand forecasting.
+- Chronological model evaluation.
+- Inventory optimization using forecast predictions and uncertainty estimates.
+- Sensitivity analysis under different gross margin assumptions.
+- An interactive Streamlit dashboard for forecasting and inventory analysis.
 
-Inventory metrics:
-- Simulated inventory cost
-- Holding cost
-- Stockout cost
+## Key Results
+
+Compared with the seasonal naive baseline, the LightGBM model achieved:
+
+- **19.2% lower MAE.**
+- **27.9% lower RMSE.**
+
+The uncertainty-adjusted inventory strategy achieved:
+
+- **10.8% lower simulated inventory cost** than the seasonal naive strategy under the selected assumptions.
+
+## Evaluation Metrics
+
+### Forecasting Performance
+- Mean Absolute Error (MAE)
+- Root Mean Squared Error (RMSE)
+
+### Inventory Performance
+- Simulated total inventory cost
+- Estimated holding cost
+- Estimated stockout cost
+- Fill rate
+- Unfulfilled demand
+- Leftover inventory
+
+## Scope and Assumptions
+
+- Model evaluation uses an initial sample of 100 product-store series from the M5 dataset.
+- Selling prices are based on the dataset; product costs and gross margins are illustrative assumptions, not Walmart's actual procurement costs.
+- Inventory optimization uses a daily single-period model without inventory carry-over or replenishment lead times.
+- Forecast evaluation uses a one-step-ahead setup with actual historical lag values.
+
